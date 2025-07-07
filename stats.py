@@ -1,17 +1,27 @@
-def get_book_text(file_path):
-    with open(file_path) as f:
-        file_contents = f.read()
+def get_num_words(text):
+    words = text.split()
+    return len(words)
 
-    return file_contents
 
-def get_num_words():
-    text = get_book_text("/home/iceeoverlord/workspace/github.com/ianchisholm24/bookbot/books/frankenstein.txt")
-    word_count = len(text.split())
-    print(word_count, "words found in the document")
+def get_chars_dict(text):
+    chars = {}
+    for c in text:
+        lowered = c.lower()
+        if lowered in chars:
+            chars[lowered] += 1
+        else:
+            chars[lowered] = 1
+    return chars
 
-def character_count():
-    text = get_book_text("/home/iceeoverlord/workspace/github.com/ianchisholm24/bookbot/books/frankenstein.txt")
-    lower_text = text.lower()
-    out = {x : lower_text.count(x) for x in set(lower_text )}
-    print(str(out))
+
+def sort_on(d):
+    return d["num"]
+
+
+def chars_dict_to_sorted_list(num_chars_dict):
+    sorted_list = []
+    for ch in num_chars_dict:
+        sorted_list.append({"char": ch, "num": num_chars_dict[ch]})
+    sorted_list.sort(reverse=True, key=sort_on)
+    return sorted_list
 
