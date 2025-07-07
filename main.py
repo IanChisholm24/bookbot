@@ -1,12 +1,4 @@
-def get_book_text(file_path):
-    with open(file_path) as f:
-        file_contents = f.read()
+from stats import get_num_words
 
-    return file_contents
-
-def main():
-    text = get_book_text("/home/iceeoverlord/workspace/github.com/ianchisholm24/bookbot/books/frankenstein.txt")
-    print(text)
-
-main()
+get_num_words()
 
